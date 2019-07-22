@@ -1,1 +1,1 @@
-# mern-skeleton
+# project-skeleton
