@@ -1,6 +1,11 @@
 import User from '../models/user.model'
 import _ from 'lodash'
 import errorHandler from './../helpers/dbErrorHandler'
+import Signup from '../../client/signup'
+
+const signup = (req, res) => {
+  res.status(200).send(Signup())  
+}
 
 const create = (req, res, next) => {
   const user = new User(req.body)
@@ -83,5 +88,6 @@ export default {
   read,
   list,
   remove,
-  update
+  update,
+  signup
 }

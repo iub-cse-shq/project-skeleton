@@ -8,6 +8,8 @@ export default () => {
         </head>
         <body>
           <div id="root">Hello World</div>
+          <a href="/signup">Sign Up</a><br/>
+          <a href="/signin">Sign In</a>
         </body>
       </html>`
 }
