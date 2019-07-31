@@ -1,0 +1,31 @@
+<html>
+    <head>My Profile</head>
+    <body>
+        <h1 id="name"></h1>
+        <h2 id="email"></h2>
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+        <script>
+            var token = localStorage.getItem('token')
+            var userId = localStorage.getItem('userId')
+            if(token && userId){
+                $.ajax({
+                    method: "GET",
+                    headers: {'Authorization': 'Bearer '+ token},
+                    url: '/api/users/'+userId,
+                }).done(function(response){
+                    console.log(response)
+                    $('#name').text(response.name)
+                    $('#email').text(response.email)
+                }).fail(function(response){
+                    console.log(response)
+                    alert('Something went wrong')
+                })
+            }else{
+                alert('User not authenticated')
+            }
+        </script>
+    </body>
+</html>

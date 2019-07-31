@@ -1,0 +1,39 @@
+<html>
+        <head>
+                <meta charset="utf-8">
+                <title>Sign In</title>
+                <link rel="stylesheet" href="/public/style.css">
+              </head>
+              <body>
+                <label>Email</label>
+                <input id="email" type="email">
+                <br>
+                <label>Password</label>
+                <input id="password" type="password">
+                <br>
+                <button id="submit">Sign In</button>
+              </body>
+              <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+              <script>
+                let user = {email: '', password: ''}
+                $('#submit').click(function(){
+                  user.email = $('#email').val()
+                  user.password = $('#password').val()
+                  $.ajax({
+                    method: "POST",
+                    url: '/auth/signin',
+                    data: user
+                  }).done(function(response){
+                    console.log(response)
+                    localStorage.setItem('token', response.token)
+                    localStorage.setItem('userId', response.user._id)
+                  }).fail(function(response){
+                    alert("Something went wrong")
+                    console.log(response)
+                  })
+                })
+              </script>
+</html>

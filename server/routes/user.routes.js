@@ -4,6 +4,8 @@ import authCtrl from '../controllers/auth.controller'
 
 const router = express.Router()
   router.route('/signup').get(userCtrl.signup)
+  router.route('/signin').get(userCtrl.signin)
+  router.route('/profile').get(userCtrl.profile)
   router.route('/api/users')
     .get(userCtrl.list)
     .post(userCtrl.create)
